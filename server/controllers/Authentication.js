@@ -23,11 +23,11 @@ exports.signUpWithEmailAndPassword = async (req, res, next) => {
 //create a new route called /current_user
 //redirect all the sign in route to it
 exports.signInWithEmailAndPassword = async (req, res, next) => {
-  res.redirect("/current_user");
+  res.send(req.user);
 };
 
 exports.facebookLogin = async (req, res, next) => {
-  res.redirect("/current_user");
+  res.redirect("/");
 };
 exports.currentUser = (req, res) => {
   res.send(req.user);

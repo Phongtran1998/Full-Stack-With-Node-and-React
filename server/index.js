@@ -10,6 +10,7 @@ mongoose.connect("mongodb://localhost/personal", {
   useNewUrlParser: true
 });
 require("./models/User");
+require("./models/Crossfire");
 app.use(bodyParser.json({ type: "*/*" }));
 app.use(
   cookieSession({
@@ -20,7 +21,7 @@ app.use(
 require("./services/passport");
 app.use(passport.initialize());
 app.use(passport.session());
-require("./router")(app);
+require("./routes/router")(app);
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {

@@ -1,5 +1,5 @@
 import React from "react";
-import Form from "../Form";
+import Form from "../Form/AuthForm";
 import { connect } from "react-redux";
 
 import * as actions from "../../actions";
@@ -11,7 +11,7 @@ const SignUp = props => {
     });
   };
   const renderError = () => {
-    if (props.auth.error) {
+    if (props.auth.errorSignUp) {
       return (
         <div className="six wide field">
           <div className="ui error message">
@@ -24,7 +24,8 @@ const SignUp = props => {
   return (
     <div
       style={{
-        marginTop: "20vh"
+        marginTop: "25vh",
+        marginLeft: "50vh"
       }}
     >
       <Form onSubmit={onSubmit} renderAuthError={renderError} />

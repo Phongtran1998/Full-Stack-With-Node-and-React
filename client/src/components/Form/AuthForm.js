@@ -4,14 +4,14 @@ import { Field, reduxForm } from "redux-form";
 const renderError = ({ error, touched }) => {
   if (touched && error) {
     return (
-      <div className="ui error message">
+      <div className="ui pointing red basic label">
         <div>{error}</div>
       </div>
     );
   }
 };
 const renderInput = ({ input, label, meta, type }) => {
-  const className = `six wide field ${
+  const className = `seven wide field ${
     meta.error && meta.touched ? "error" : ""
   }`;
   return (
@@ -47,10 +47,10 @@ const Form = props => {
 const validate = formValues => {
   const error = {};
   if (!formValues.email) {
-    error.email = "You must enter a title";
+    error.email = "You must enter an email";
   }
   if (!formValues.password) {
-    error.password = "You must enter a description";
+    error.password = "You must enter your password";
   }
 
   return error;
