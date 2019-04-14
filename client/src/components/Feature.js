@@ -19,7 +19,7 @@ const renderList = props => {
               <div className="description">Model: {model}</div>
               <div className="description">Price: {price}GP</div>
             </div>
-            <Link className="ui button">
+            <Link to={`/weapons/edit/${_id}`} className="ui button">
               <i className="icon settings" />
               Edit
             </Link>

@@ -8,7 +8,8 @@ import Login from "./auth/Login";
 import SignUp from "./auth/SignUp";
 import Feature from "./Feature";
 import Header from "./Header";
-import WeaponForm from "./Form/WeaponForm";
+import CreateWeapon from "./CreateWeapon";
+import EditWeapon from "./EditWeapon";
 
 const App = props => {
   useEffect(() => {
@@ -48,7 +49,8 @@ const App = props => {
           <Switch>
             <Route path="/" exact component={Root} />
             <Route path="/signup" exact component={SignUp} />
-            <Route path="/weapons/add" exact component={WeaponForm} />
+            <Route path="/weapons/add" exact component={CreateWeapon} />
+            <Route path="/weapons/edit/:id" exact component={EditWeapon} />
           </Switch>
         </BrowserRouter>
       </div>

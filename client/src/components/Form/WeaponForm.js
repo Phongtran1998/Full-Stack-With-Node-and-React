@@ -1,11 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Field, reduxForm } from "redux-form";
-import { connect } from "react-redux";
-import { compose } from "redux";
 
-import * as actions from "../../actions";
-import requireAuth from "../hocs/requireAuth";
 
 const renderError = ({ error, touched }) => {
   if (touched && error) {
@@ -29,9 +25,7 @@ const renderInput = ({ input, label, meta }) => {
 
 const WeaponForm = props => {
   const onSubmit = formValues => {
-    props.createWeapon(formValues, () => {
-      props.history.push("/");
-    });
+    props.onSubmit(formValues);
   };
   return (
     <form
@@ -58,10 +52,4 @@ const validate = formValues => {
   return error;
 };
 
-export default compose(
-  connect(
-    null,
-    actions
-  ),
-  reduxForm({ form: "WeaponForm", validate })
-)(requireAuth(WeaponForm));
+export default reduxForm({ form: "WeaponForm", validate })(WeaponForm);
