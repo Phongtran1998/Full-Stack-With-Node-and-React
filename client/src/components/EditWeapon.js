@@ -10,7 +10,9 @@ const EditWeapon = props => {
     props.fetchWeapons();
   }, []);
   const onSubmit = formValues => {
-    console.log(formValues);
+    props.editWeapon(formValues, () => {
+      props.history.push("/")
+    })
   };
   return <WeaponForm onSubmit={onSubmit} initialValues={props.weapon} />;
 };

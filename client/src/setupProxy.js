@@ -6,4 +6,5 @@ module.exports = function(app) {
     proxy("/auth/facebook/callback", { target: "http://localhost:4000" })
   );
   app.use(proxy("/api/*", { target: "http://localhost:4000" }));
+  app.use(proxy("/api/weapons/*", { target: "http://localhost:4000" }));
 };

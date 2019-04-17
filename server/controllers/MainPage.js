@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { Path } = require("path");
 
 const Crossfire = mongoose.model("Crossfire");
 
@@ -26,6 +27,17 @@ exports.fetchWeapons = async (req, res, next) => {
   try {
     const weapons = await Crossfire.find({ _user: req.user._id });
     res.send(weapons);
+  } catch (e) {
+    next(e);
+  }
+};
+
+exports.editWeapon = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    await Crossfire.updateOne({ _id: id }, req.body);
+    const weapon = await Crossfire.findOne({ _id: id });
+    res.send(weapon);
   } catch (e) {
     next(e);
   }

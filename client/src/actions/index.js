@@ -4,7 +4,8 @@ import {
   AUTH_ERROR_SIGNUP,
   FETCH_USER,
   FETCH_WEAPONS,
-  CREATE_WEAPON
+  CREATE_WEAPON,
+  EDIT_WEAPON
 } from "./type";
 import axios from "axios";
 
@@ -44,5 +45,11 @@ export const fetchWeapons = () => async dispatch => {
 export const createWeapon = (weapon, callback) => async dispatch => {
   const res = await axios.post("/api/weapons", { ...weapon });
   dispatch({ type: CREATE_WEAPON, payload: res.data });
+  callback();
+};
+
+export const editWeapon = (weapon, callback) => async dispatch => {
+  const res = axios.put(`/api/weapons/${weapon._id}`, { ...weapon });
+  dispatch({ type: EDIT_WEAPON, payload: res.data });
   callback();
 };
