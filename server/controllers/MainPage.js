@@ -42,3 +42,13 @@ exports.editWeapon = async (req, res, next) => {
     next(e);
   }
 };
+
+exports.deleteWeapon = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    await Crossfire.deleteOne({ _id: id });
+    res.send({ id: id });
+  } catch (e) {
+    next(e);
+  }
+};

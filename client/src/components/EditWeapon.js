@@ -11,10 +11,29 @@ const EditWeapon = props => {
   }, []);
   const onSubmit = formValues => {
     props.editWeapon(formValues, () => {
-      props.history.push("/")
-    })
+      props.history.push("/");
+    });
   };
-  return <WeaponForm onSubmit={onSubmit} initialValues={props.weapon} />;
+  const onDelete = id => {
+    props.deleteWeapon(id, () => {
+      props.history.push("/");
+    });
+  };
+  return (
+    <>
+      <WeaponForm onSubmit={onSubmit} initialValues={props.weapon}>
+        <button
+          type="button"
+          onClick={() => {
+            onDelete(props.weapon._id);
+          }}
+          className="ui button red"
+        >
+          Delete
+        </button>
+      </WeaponForm>
+    </>
+  );
 };
 
 const mapStateToProps = ({ weapons }, ownProps) => {

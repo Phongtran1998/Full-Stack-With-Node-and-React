@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Field, reduxForm } from "redux-form";
 
-
 const renderError = ({ error, touched }) => {
   if (touched && error) {
     return (
@@ -40,6 +39,7 @@ const WeaponForm = props => {
       <Link to="/" className="ui button orange">
         Back
       </Link>
+      {props.children}
     </form>
   );
 };

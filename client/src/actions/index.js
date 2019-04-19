@@ -5,7 +5,8 @@ import {
   FETCH_USER,
   FETCH_WEAPONS,
   CREATE_WEAPON,
-  EDIT_WEAPON
+  EDIT_WEAPON,
+  DELETE_WEAPON
 } from "./type";
 import axios from "axios";
 
@@ -49,7 +50,13 @@ export const createWeapon = (weapon, callback) => async dispatch => {
 };
 
 export const editWeapon = (weapon, callback) => async dispatch => {
-  const res = axios.put(`/api/weapons/${weapon._id}`, { ...weapon });
+  const res = await axios.put(`/api/weapons/${weapon._id}`, { ...weapon });
   dispatch({ type: EDIT_WEAPON, payload: res.data });
+  callback();
+};
+
+export const deleteWeapon = (id, callback) => async dispatch => {
+  const res = await axios.delete(`/api/weapons/${id}`);
+  dispatch({ type: DELETE_WEAPON, payload: res.data });
   callback();
 };
